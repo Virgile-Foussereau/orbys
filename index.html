@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<!-- AUTHOR: Emmanuel Pietriga (c) 2018-2022-->
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Sanctuary - Calendar</title>
+        <link rel="icon" type="image/png" href="img/favicon.png">
+        <script type="text/javascript" src="js/d3.v7.min.js"></script>
+        <script type="text/javascript" src="js/tinycolor.js"></script>
+        <script type="text/javascript" src="asteroids.json"></script>
+        <script type="text/javascript" src="js/mycode.js"></script>
+        <script type="text/javascript" src="js/FileSaver.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.5.0"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
+        <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+        <link rel="stylesheet" href="myStyle.css">
+    </head>
+
+<!--
+&#9791; &#9791; \u263F; Me
+&#9792; &#9792; \u2640 ; V
+&#9793; &#9793; \u2641 ; E
+&#9794; &#9794; \u2642 ; Ma
+&#9795; &#9795; \u2643 ; J
+&#9796; &#9796; \u2644 ; S
+&#9954; &#9797; \u26E2 ; U
+&#9798; &#9798; \u2646 ; N
+&#9907; &#9907; \u26B3 ; Ceres
+&#9799; &#9799; \u2647 ; Pluto
+-->
+
+    <body onload="addViz()" style="background-color:#152238">
+        <div><img id="logo" src="img/logo_orbys2.png" width="250" alt="logo"/></div>
+        <div id="options" >
+            <form autocomplete="off" style="width: 600;"> 
+            <div class="autocomplete">
+            <input type="text" placeholder="Search a celestial body" class="unfocused" id="searchField" onclick="focusSearch();" onkeydown="handleKeyEvent(event);"/>
+            </div>
+            <input type="button" value="Search" onclick="searchBody();" id="searchButoon"/>
+            <input type="button" value="Reset" onclick="resetHighlight(1);" id="resetButton"/>
+            <input type="button" value="Show details" onclick="showDetails();" id="detailsButton" name="" disabled/>
+            </form>
+        </div>
+        <br>
+        <div id="details" style="display: none; opacity: 0; overflow: auto;"> <!-- A MODIFIER display block ou none, opacity 0 ou 1 -->
+            <div id="detailsTitle" style="text-align: center; font-size: 16pt; font-family: Arial, sans-serif; color: white; margin-top: 1em; margin-bottom: 1em;"></div>
+            <div id="detailsContent" >
+                <div id="aside" >
+                    <model-viewer id="modelViewer" alt="Asteroid 3D model" src="/asteroids3D_gltf/Bennu.gltf" disable-tap auto-rotate camera-controls disable-pan></model-viewer>
+                    <img id="sizeScale" src="img/eiffel.png" height="100" alt="size scale"/>
+                    <div id="sizeScaleName" style="text-align: center; font-size: 8pt; font-family: Arial, sans-serif; color: white; margin-top: 1em; margin-bottom: 1em;" title="Scale">At scale</div>
+                </div>
+                <div id="bodyName" >Philosophia</div>
+                <div id="breakLine" ><br></div>
+                <div id="power-gauge" ></div>
+                <div id="rotDiameterPlot" ></div>
+                <div id="massDiameterPlot" ></div>
+                <div id="albedoHistogram" ></div>  
+                <div id="numObservation" >
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <img id="numObsImg" src="img/numObs.png" width="400" alt="number of observations"/>
+                    <div id="numObsText" style="text-align: center; font-size: 18pt; color: #152238; margin-top: 1em; margin-bottom: 1em;">Number of observations</div>
+                </div> 
+                <div id="energy" >
+                    <img id="energyImg" src="img/nuclear.png" width="400" alt="Kinetic Energy equivalence"/>
+                    <div id="energyNumber" style="text-align: center; font-size: 28pt; color: #152238; margin-top: 1em; margin-bottom: 1em; width: 400px;">40 000</div>
+                    <div id="energyText" style="text-align: center; font-size: 18pt; color: white; margin-top: 1em; margin-bottom: 1em; width: 400px;">Impact Energy equivalent to 18 Tsar Bomba*</div>
+                    <div id="annotation" style="text-align: center; font-size: 10pt; color: white; margin-top: 1em; margin-bottom: 1em; width: 400px;">*The largest nuclear bomb ever detonated (50 Mt)</div>
+                </div>
+            </div>      
+        </div>
+        <script src="js/retina.js" charset="utf-8"></script>
+    </body>
+</html>

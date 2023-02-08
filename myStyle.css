@@ -1,0 +1,256 @@
+@font-face {
+    font-family: 'MiniFont';
+    src: url('img/Mini7Condensed.v11.ttf')  format('truetype');
+    -webkit-font-smoothing: none;
+  }
+  
+  @font-face {
+    font-family: 'Vicasso';
+    src: url('img/font-face/afe27afa1552f15b1f4f7090a35260bb.ttf') format('truetype'),
+         url('img/font-face/afe27afa1552f15b1f4f7090a35260bb.woff2') format('woff2'), /* Super Modern Browsers */
+         url('img/font-face/afe27afa1552f15b1f4f7090a35260bb.woff') format('woff'), /* Pretty Modern Browsers */
+         url('img/font-face/afe27afa1552f15b1f4f7090a35260bb.svg#svgFontName') format('svg'); /* Legacy iOS */
+  }
+  
+  #detailsContent {
+      width:100%;
+      display:grid;
+      grid-template-columns: repeat(8, 1fr);
+  
+  }
+  
+  #power-gauge {
+      grid-area: 1 / 5 / 1 / 5;
+  }
+  
+  #rotDiameterPlot {
+      grid-area: 4 / 2 / 4 / 4;
+  }
+  
+  #massDiameterPlot {
+      grid-area: 4 / 1 / 4 / 2;
+  }
+  
+  #albedoHistogram {
+      grid-area: 4 / 5 / 4 / 6;
+  }
+  
+  #numObservation{
+      grid-area: 4 / 7 / 4 / 8;
+  }
+  
+  #energy{
+      grid-area: 1 / 7 / 3 / 8;
+  }
+  
+  #breakLine {
+      grid-area: 3 / 1 / 3 / 8;
+  }
+  
+  #aside {
+      /* height: 600px;
+      width: 600px; */
+      /* position: absolute; */
+      position: relative;
+      grid-area: 1 / 1 / 3 / 3;
+  }
+  
+  
+  img#logo {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 30px;
+  }
+  
+  svg {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  
+  div#options {
+      width:100%;
+      text-align: center;
+      margin-top:.5em;
+  }
+  
+  input {
+      display: inline-block;
+      margin:0;
+      border-radius: 0;
+      padding: 4px 6px;
+      background-color: white;
+      text-align:left;
+      font-size:8pt;
+      font-family: Arial, sans-serif;
+  }
+  
+  span.progress {
+      text-align:left;
+      font-size:8pt;
+      font-family: Arial, sans-serif;
+      display: inline-block;
+      width:12em;
+      color:#CCC;
+  }
+  
+  label {
+      font-size:8pt;
+      font-family: Arial, sans-serif;
+  }
+  
+  .cbLb, .cbAg {
+      margin-right:4em;
+  }
+  
+  .unfocused {
+      color:#CCC;
+      border:1px solid #CCC;
+  }
+  
+  #dateSet, #saveSVG {
+      border:1px solid #CCC;
+      background-color:#EEE;
+  }
+  
+  #dateSet:hover, #saveSVG:hover {
+      background-color:#AAA;
+  }
+  
+  .focused {
+      color:#444;
+      border:1px solid #CCC;
+  }
+  
+  #inProg {
+      display: inline-block;
+      vertical-align: middle;
+  }
+  
+  .off {
+      visibility: hidden;
+  }
+  
+  .on {
+      visibility: visible;
+  }
+  
+  canvas {
+      font-family: 'MiniFont', "Arial";
+      image-rendering: pixelated;
+      image-rendering: -moz-crisp-edges;
+  }
+  
+  .autocomplete {
+    /*the container must be positioned relative:*/
+    position: relative;
+    display: inline-block;
+  }
+  input {
+    border: 1px solid transparent;
+    background-color: #f1f1f1;
+    padding: 10px;
+    font-size: 16px;
+  }
+  input[type=text] {
+    background-color: #f1f1f1;
+  }
+  input[type=submit] {
+    background-color: DodgerBlue;
+    color: #fff;
+  }
+  .autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+  }
+  .autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+  }
+  .autocomplete-items div:hover {
+    /*when hovering an item:*/
+    background-color: #e9e9e9;
+  }
+  .autocomplete-active {
+    /*when navigating through the items using the arrow keys:*/
+    background-color: DodgerBlue !important;
+    color: #ffffff;
+  }
+  #power-gauge g.arc {
+          fill: steelblue;
+      }
+  
+  #power-gauge g.pointer {
+          fill: #e85116;
+          stroke: #b64011;
+      }
+      
+  #power-gauge g.label text {
+          text-anchor: middle;
+          font-size: 14px;
+          font-weight: bold;
+          fill: #666;
+      }
+  
+  
+  /* This styles the 3D object inserted in the aside container */
+  
+  #aside model-viewer {
+      height: 600px;
+      width: 600px;
+      /* position: absolute;
+      top: 0;
+      left: 0; */
+      position: relative;
+      border: none;
+  }
+  
+  #sizeScale {
+      position: absolute;
+      height: 100;
+      bottom: 0;
+      left: 0;
+  }
+  
+  #sizeScaleName {
+      position: absolute;
+      z-index: 100;
+      bottom: -35px;
+      left : 0;    
+  }
+  
+  #numObsText {
+      position: relative;
+      bottom: 280px;
+      left : 20px;
+      transform: rotate(-21.6deg);
+      font-family: 'Vicasso';
+  }
+  
+  #energyText {
+      font-family: "EB Garamond";
+  }
+  
+  #energyNumber {
+      font-family: "Vicasso";
+      background-color: white;
+  }
+  
+  #bodyName {
+      font-family: "Vicasso";
+      color: white;
+      font-size: 100px;
+      grid-area: 2 / 2 / 2 / 5;
+      padding-left: 100px;
+      width: 400px;
+  }
