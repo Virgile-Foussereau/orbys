@@ -25,11 +25,6 @@ offline: "offlineData.json",
 // offline: "offlineData.json",
 ```
 
-## Screenshots and demo video
-
-If you are unable to run the project (should not happen), two screenshots and a demo video are provided.
-
-
 ## Acknowledgements
 
  - This project was created in a course given at Polytechnique by Emmanuel Pietriga.
